@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > TaskServiceTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">src.Test</a>
+</div>
+
+<h1>Coverage Summary for Class: TaskServiceTest (src.Test)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TaskServiceTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (20/20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package src.Test;
+&nbsp;
+&nbsp;import org.junit.jupiter.api.BeforeAll;
+&nbsp;import org.junit.jupiter.api.Test;
+&nbsp;
+&nbsp;import src.main.TaskService;
+&nbsp;import src.main.Task;
+&nbsp;
+&nbsp;import static org.junit.Assert.assertTrue;
+&nbsp;
+<b class="fc">&nbsp;class TaskServiceTest {</b>
+&nbsp;    private static TaskService taskService;
+&nbsp;
+&nbsp;    @BeforeAll
+&nbsp;    static void setup() {
+<b class="fc">&nbsp;        taskService = TaskService.getService();</b>
+&nbsp;    }
+&nbsp;    @Test
+&nbsp;    void testGetTaskAndUpdateSuccess() {
+<b class="fc">&nbsp;        Task task = new Task(&quot;123456&quot;, &quot;Fisal&quot;, &quot;This is for xxx&quot;);</b>
+<b class="fc">&nbsp;        assertTrue(TaskService.addTask(task));</b>
+&nbsp;
+<b class="fc">&nbsp;        Task updateTask = taskService.getTask(task.getTaskId());</b>
+&nbsp;
+&nbsp;
+&nbsp;        //validating assertions are true for values assigned
+<b class="fc">&nbsp;        assertTrue(task.getTaskId().equals(&quot;123456&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(task.getTaskName().equals(&quot;Fisal&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(task.getTaskDescription().equals(&quot;This is for xxx&quot;));</b>
+&nbsp;
+&nbsp;        //update task name
+<b class="fc">&nbsp;        updateTask.setTaskName(&quot;lasif&quot;);</b>
+<b class="fc">&nbsp;        updateTask = taskService.getTask(updateTask.getTaskId());</b>
+<b class="fc">&nbsp;        assertTrue(updateTask.getTaskName().equals(&quot;Fisal&quot;));</b>
+&nbsp;        //update task description
+<b class="fc">&nbsp;        updateTask.setTaskDescription(&quot;This is for updated&quot;);</b>
+<b class="fc">&nbsp;        updateTask = taskService.getTask(updateTask.getTaskId());</b>
+<b class="fc">&nbsp;        assertTrue(updateTask.getTaskDescription().equals(&quot;This is for xxx&quot;));</b>
+&nbsp;
+&nbsp;    }
+&nbsp;    private void assertTrue(Object addTask) {
+&nbsp;
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void testDeleteTask(){
+<b class="fc">&nbsp;        Task task1 = new Task(&quot;1234589&quot;, &quot;Fisal&quot;, &quot;This is for xxx&quot;);</b>
+<b class="fc">&nbsp;        Task task2 = new Task(&quot;123460&quot;, &quot;lasif&quot;, &quot;This is for xxx updated&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        assertTrue(TaskService.addTask(task1));</b>
+<b class="fc">&nbsp;        assertTrue(TaskService.addTask(task2));</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;        taskService.deleteTask(task1.getTaskId());</b>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-29 02:02</div>
+</div>
+</body>
+</html>

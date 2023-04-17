@@ -1,0 +1,198 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > AppointmentTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">src.Test</a>
+</div>
+
+<h1>Coverage Summary for Class: AppointmentTest (src.Test)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AppointmentTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (12/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (38/38)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package src.Test;
+&nbsp;
+&nbsp;import org.junit.jupiter.api.Assertions;
+&nbsp;import org.junit.jupiter.api.Test;
+&nbsp;import src.main.Appointment;
+&nbsp;
+&nbsp;import java.util.Calendar;
+&nbsp;import java.util.Date;
+&nbsp;
+&nbsp;import static org.junit.jupiter.api.Assertions.assertTrue;
+<b class="fc">&nbsp;class AppointmentTest {</b>
+&nbsp;        @Test
+&nbsp;        void testApptConstructor() {
+<b class="fc">&nbsp;            Calendar c = Calendar.getInstance();</b>
+<b class="fc">&nbsp;            c.set(2024, 03, 28, 3, 29);</b>
+<b class="fc">&nbsp;            Date date = c.getTime();</b>
+&nbsp;
+&nbsp;            //id too long
+<b class="fc">&nbsp;            Assertions.assertThrows(IllegalArgumentException.class, () -&gt;{</b>
+<b class="fc">&nbsp;                new Appointment(&quot;12345678901&quot;, date, &quot;Appt Description&quot;);</b>
+&nbsp;            });
+&nbsp;            //id null
+<b class="fc">&nbsp;            Assertions.assertThrows(IllegalArgumentException.class, () -&gt;{</b>
+<b class="fc">&nbsp;                new Appointment(null, date , &quot;Appt Description&quot;);</b>
+&nbsp;            });
+&nbsp;            //description too long
+<b class="fc">&nbsp;            Assertions.assertThrows(IllegalArgumentException.class, () -&gt;{</b>
+<b class="fc">&nbsp;                new Appointment(&quot;1234567890&quot;, date , &quot;Thisisadescription&quot;</b>
+&nbsp;                        + &quot;thatiswaytoolongtobevalidforthisconstructor&quot;);
+&nbsp;            });
+&nbsp;            //description null
+<b class="fc">&nbsp;            Assertions.assertThrows(IllegalArgumentException.class, () -&gt;{</b>
+<b class="fc">&nbsp;                new Appointment(&quot;1234567890&quot;, date , null);</b>
+&nbsp;            });
+&nbsp;            //date null
+<b class="fc">&nbsp;            Assertions.assertThrows(IllegalArgumentException.class, () -&gt;{</b>
+<b class="fc">&nbsp;                new Appointment(&quot;1234567890&quot;, null , &quot;Appt Description&quot;);</b>
+&nbsp;            });
+&nbsp;            /*date before today
+&nbsp;            date.setTime(0);
+&nbsp;            Assertions.assertThrows(IllegalArgumentException.class, () -&gt;{
+&nbsp;                new Appointment(&quot;1234567890&quot;, date , &quot;Appt Description&quot;);
+&nbsp;            });*/
+&nbsp;
+&nbsp;            //everything correct
+<b class="fc">&nbsp;            Date newDate = c.getTime();</b>
+<b class="fc">&nbsp;            Appointment appt = new Appointment(&quot;1234567890&quot;, newDate, &quot;Appt Description&quot;);</b>
+<b class="fc">&nbsp;            assertTrue(appt.getApptId().equals(&quot;1234567890&quot;));</b>
+<b class="fc">&nbsp;            assertTrue(appt.getApptDate().equals(newDate));</b>
+<b class="fc">&nbsp;            assertTrue(appt.getApptDescription().equals(&quot;Appt Description&quot;));</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;        @Test
+&nbsp;         void testSetters() {
+<b class="fc">&nbsp;            Calendar c = Calendar.getInstance();</b>
+<b class="fc">&nbsp;            c.set(2025, 10, 5, 9, 15);</b>
+<b class="fc">&nbsp;            Date date = c.getTime();</b>
+<b class="fc">&nbsp;            Date newDate = c.getTime();</b>
+<b class="fc">&nbsp;            Date badDate = new Date();</b>
+<b class="fc">&nbsp;            badDate.setTime(10000);</b>
+&nbsp;
+&nbsp;            // make object
+<b class="fc">&nbsp;            Appointment appt = new Appointment(&quot;1234567890&quot;, newDate, &quot;Appt Description&quot;);</b>
+&nbsp;
+&nbsp;            // set new description
+<b class="fc">&nbsp;            appt.setApptDescription(&quot;This is a description&quot;);</b>
+&nbsp;            // null description error
+<b class="fc">&nbsp;            Assertions.assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc">&nbsp;                appt.setApptDescription(null);</b>
+&nbsp;            });
+&nbsp;            // long description error
+<b class="fc">&nbsp;            Assertions.assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc">&nbsp;                appt.setApptDescription(&quot;Thisdescriptionistoolongtobevalidandwillthrowanerror&quot;);</b>
+&nbsp;            });
+&nbsp;            // check that description is changed
+<b class="fc">&nbsp;            assertTrue(appt.getApptDescription().equals(&quot;This is a description&quot;));</b>
+&nbsp;
+&nbsp;            // date is before today
+<b class="fc">&nbsp;            Assertions.assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc">&nbsp;                appt.setApptDate(badDate);</b>
+&nbsp;            });
+&nbsp;            // date is null
+<b class="fc">&nbsp;            Assertions.assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc">&nbsp;                appt.setApptDate(null);</b>
+&nbsp;            });
+&nbsp;
+&nbsp;            // date is appropriate
+<b class="fc">&nbsp;            appt.setApptDate(newDate);</b>
+&nbsp;            // check that date changed
+<b class="fc">&nbsp;            assertTrue(appt.getApptDate().equals(newDate));</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-29 02:02</div>
+</div>
+</body>
+</html>

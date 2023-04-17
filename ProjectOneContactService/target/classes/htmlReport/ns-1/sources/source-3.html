@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ContactServiceTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">src.Test</a>
+</div>
+
+<h1>Coverage Summary for Class: ContactServiceTest (src.Test)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ContactServiceTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (27/27)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package src.Test;
+&nbsp;
+&nbsp;import static org.junit.Assert.assertTrue;
+&nbsp;
+&nbsp;import org.junit.jupiter.api.BeforeAll;
+&nbsp;import org.junit.jupiter.api.Test;
+&nbsp;
+&nbsp;import src.main.ContactService;
+&nbsp;import src.main.Contact;
+&nbsp;
+<b class="fc">&nbsp;class ContactServiceTest {</b>
+&nbsp;    private static ContactService contactService;
+&nbsp;
+&nbsp;    @BeforeAll
+&nbsp;    static void setup() {
+<b class="fc">&nbsp;        contactService = ContactService.getService();</b>
+&nbsp;    }
+&nbsp;    @Test
+&nbsp;    void testGetContactAndUpdateSuccess() {
+<b class="fc">&nbsp;        Contact contact = new Contact(&quot;123456&quot;, &quot;Christine&quot;, &quot;Emerson&quot;, &quot;6038038231&quot;, &quot;139 Chestnut St.&quot;);</b>
+<b class="fc">&nbsp;        assertTrue(contactService.AddContact(contact));</b>
+&nbsp;
+<b class="fc">&nbsp;        Contact UpdateContact = contactService.GetContact(contact.getContactId());</b>
+&nbsp;
+&nbsp;
+&nbsp;        //validating assertions are true for values assigned
+<b class="fc">&nbsp;        assertTrue(contact.getContactId().equals(&quot;123456&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact.getFirstName().equals(&quot;Christine&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact.getLastName().equals(&quot;Emerson&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact.getPhoneNum().equals(&quot;6038038231&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact.getAddress().equals(&quot;139 Chestnut St.&quot;));</b>
+&nbsp;
+&nbsp;        // testing for update contact
+&nbsp;        //removeContact updateContact = contactService.getContact(addContact.getContactId());
+&nbsp;        //assertTrue(contactService.setContactId().equals(&quot;123456&quot;));
+&nbsp;        //first name
+<b class="fc">&nbsp;        UpdateContact.setFirstName(&quot;Chrissi&quot;);</b>
+<b class="fc">&nbsp;        UpdateContact = contactService.GetContact(UpdateContact.getContactId());</b>
+<b class="fc">&nbsp;        assertTrue(UpdateContact.getFirstName().equals(&quot;Christine&quot;));</b>
+&nbsp;        //last name
+<b class="fc">&nbsp;        UpdateContact.setLastName(&quot;Emery&quot;);</b>
+<b class="fc">&nbsp;        UpdateContact = contactService.GetContact(UpdateContact.getContactId());</b>
+<b class="fc">&nbsp;        assertTrue(UpdateContact.getLastName().equals(&quot;Emerson&quot;));</b>
+&nbsp;        //phone number
+<b class="fc">&nbsp;        UpdateContact.setPhoneNum(&quot;9421231234&quot;);</b>
+<b class="fc">&nbsp;        UpdateContact = contactService.GetContact(UpdateContact.getContactId());</b>
+<b class="fc">&nbsp;        assertTrue(UpdateContact.getPhoneNum().equals(&quot;9421231234&quot;));</b>
+&nbsp;        //address
+<b class="fc">&nbsp;        UpdateContact.setAddress(&quot;129 Chestnut St.&quot;);</b>
+<b class="fc">&nbsp;        UpdateContact = contactService.GetContact(UpdateContact.getContactId());</b>
+<b class="fc">&nbsp;        assertTrue(UpdateContact.getAddress().equals(&quot;139 Chestnut St.&quot;));</b>
+&nbsp;
+&nbsp;    }
+&nbsp;    @Test
+&nbsp;    void testDeleteContact(){
+<b class="fc">&nbsp;        Contact contact1 = new Contact(&quot;123456&quot;, &quot;Christine&quot;, &quot;Emerson&quot;, &quot;6038038231&quot;, &quot;139 Chestnut St.&quot;);</b>
+<b class="fc">&nbsp;        Contact contact2 = new Contact(&quot;123457&quot;, &quot;Chrissi&quot;, &quot;Emery&quot;, &quot;6038038232&quot;, &quot;129 Chestnut St.&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        assertTrue(contactService.AddContact(contact1));</b>
+<b class="fc">&nbsp;        assertTrue(contactService.AddContact(contact2));</b>
+&nbsp;
+<b class="fc">&nbsp;        contactService.DeleteContact(contact1.getContactId());</b>
+&nbsp;
+&nbsp;        // assertTrue(contactService.getContact(contact1.getContactId()) == null);
+&nbsp;        // assertTrue(contactService.getContact(contact2.getContactId()).equals(contact2));
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-29 02:02</div>
+</div>
+</body>
+</html>

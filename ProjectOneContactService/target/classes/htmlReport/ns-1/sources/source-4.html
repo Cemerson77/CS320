@@ -1,0 +1,295 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ContactTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">src.Test</a>
+</div>
+
+<h1>Coverage Summary for Class: ContactTest (src.Test)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ContactTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (25/25)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (42/42)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package src.Test;
+&nbsp;
+&nbsp;import static org.junit.jupiter.api.Assertions.*;
+&nbsp;
+&nbsp;import org.junit.jupiter.api.Assertions;
+&nbsp;import org.junit.jupiter.api.Test;
+&nbsp;
+&nbsp;import src.main.Contact;
+&nbsp;
+<b class="fc">&nbsp;class ContactTest {</b>
+&nbsp;    /*
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     *
+&nbsp;     * Start Test for fields being null
+&nbsp;     *
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     */
+&nbsp;
+&nbsp;    @Test	//Test for contact Id null
+&nbsp;    void testContactIdNullArg() {
+<b class="fc">&nbsp;        Assertions.assertThrows(IllegalArgumentException.class, () -&gt;{</b>
+<b class="fc">&nbsp;            new Contact( null, &quot;Christine&quot;, &quot;Emerson&quot;, &quot;6038038231&quot;, &quot;139 Chestnut St.&quot;);</b>
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test	//Test for first name null
+&nbsp;    void testContactFirstNameNullArg() {
+<b class="fc">&nbsp;        Assertions.assertThrows(IllegalArgumentException.class, () -&gt;{</b>
+<b class="fc">&nbsp;            new Contact(&quot;123456&quot;, null , &quot;Emerson&quot;, &quot;6038038231&quot;, &quot;139 Chestnut St.&quot;);</b>
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test	//Test for last name null
+&nbsp;    void testContactLastNameNullArg() {
+<b class="fc">&nbsp;        Assertions.assertThrows(IllegalArgumentException.class, () -&gt;{</b>
+<b class="fc">&nbsp;            new Contact(&quot;123456&quot;, &quot;Christine&quot;, null, &quot;6038038231&quot;, &quot;139 Chestnut St.&quot;);</b>
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test	//Test for phone number null
+&nbsp;    void testContactPhoneNumArg() {
+<b class="fc">&nbsp;        Assertions.assertThrows(IllegalArgumentException.class, () -&gt;{</b>
+<b class="fc">&nbsp;            new Contact(&quot;123456&quot;, &quot;Christine&quot;, &quot;Emerson&quot;, null, &quot;139 Chestnut St.&quot;);</b>
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test	//Test for address null
+&nbsp;    void testContactAddressNullArg() {
+<b class="fc">&nbsp;        Assertions.assertThrows(IllegalArgumentException.class, () -&gt;{</b>
+<b class="fc">&nbsp;            new Contact(&quot;123456&quot;, &quot;Christine&quot;, &quot;Emerson&quot;, &quot;6038038231&quot;, null);</b>
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    /*
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     *
+&nbsp;     * End Test for fields being null
+&nbsp;     *
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     */
+&nbsp;
+&nbsp;    /*
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     *
+&nbsp;     * Start Test for Contact and Getter
+&nbsp;     *
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     */
+&nbsp;    @Test
+&nbsp;    void testContact(){
+<b class="fc">&nbsp;        Contact contact = new Contact(&quot;123456&quot;, &quot;Christine&quot;, &quot;Emerson&quot;, &quot;6038038231&quot;, &quot;139 Chestnut St.&quot;);</b>
+&nbsp;
+&nbsp;        // validating assertions are true for values assigned
+<b class="fc">&nbsp;        assertTrue(contact.getContactId().equals(&quot;123456&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact.getFirstName().equals(&quot;Christine&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact.getLastName().equals(&quot;Emerson&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact.getPhoneNum().equals(&quot;6038038231&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact.getAddress().equals(&quot;139 Chestnut St.&quot;));</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /*
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     *
+&nbsp;     * End Test for Contact and Getter
+&nbsp;     *
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     */
+&nbsp;
+&nbsp;
+&nbsp;    /*
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     *
+&nbsp;     * Start Test for fields being too long
+&nbsp;     *
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     */
+&nbsp;    @Test	//Contact ID too long
+&nbsp;    void testContactIdTooLong() {
+&nbsp;        // testing for IllegalArgumentException
+<b class="fc">&nbsp;        Assertions.assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc">&nbsp;            new Contact(&quot;123456789101112&quot;, &quot;Christine&quot;, &quot;Emerson&quot;,&quot;6038038231&quot;, &quot;139 Chestnut St.&quot;);</b>
+&nbsp;        });		}
+&nbsp;
+&nbsp;    @Test	//First name too long
+&nbsp;    void testContactFirstNameTooLong() {
+<b class="fc">&nbsp;        Assertions.assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc">&nbsp;            new Contact(&quot;123456&quot;, &quot;Christineee&quot;, &quot;Emerson&quot;,&quot;6038038231&quot;, &quot;139 Chestnut St.&quot;);</b>
+&nbsp;        });      }
+&nbsp;
+&nbsp;    @Test	//Last name too long
+&nbsp;    void testContactLastNameTooLong() {
+<b class="fc">&nbsp;        Assertions.assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc">&nbsp;            new Contact(&quot;123456&quot;, &quot;Christine&quot;, &quot;Emersonnnnn&quot;,&quot;6038038231&quot;, &quot;139 Chestnut St.&quot;);</b>
+&nbsp;        });      }
+&nbsp;
+&nbsp;    @Test	//Last name too long
+&nbsp;    void testContactPhoneNumTooLong() {
+<b class="fc">&nbsp;        Assertions.assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc">&nbsp;            new Contact(&quot;123456&quot;, &quot;Christine&quot;, &quot;Emerson&quot;,&quot;603803823177&quot;, &quot;139 Chestnut St.&quot;);</b>
+&nbsp;        });      }
+&nbsp;    @Test	//Address too long
+&nbsp;    void testContactAddressTooLong() {
+<b class="fc">&nbsp;        Assertions.assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc">&nbsp;            new Contact(&quot;123456&quot;, &quot;Christine&quot;, &quot;Emerson&quot;,&quot;6038038231&quot;, &quot;1111111111111111111139 Chestnut St.&quot;);</b>
+&nbsp;        }); }
+&nbsp;
+&nbsp;    /*
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     *
+&nbsp;     * End Test for fields being too long
+&nbsp;     *
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     */
+&nbsp;
+&nbsp;    /*
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     *
+&nbsp;     * Start Test for Phone number is not too short
+&nbsp;     *
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     */
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void testContactPhoneNumTooShort() {
+<b class="fc">&nbsp;        Assertions.assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc">&nbsp;            new Contact(&quot;123456&quot;, &quot;Christine&quot;, &quot;Emerson&quot;,&quot;60380382&quot;, &quot;139 Chestnut St.&quot;);</b>
+&nbsp;        });
+&nbsp;    }
+&nbsp;    /*
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     *
+&nbsp;     * End Test for Phone number is not too short
+&nbsp;     *
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     */
+&nbsp;
+&nbsp;    /*
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     *
+&nbsp;     * Start Test for verifying everything is accurate
+&nbsp;     *
+&nbsp;     * ----------------------------------------------------------------------------------------------------
+&nbsp;     */
+&nbsp;
+&nbsp;    //Test Contact create
+&nbsp;    @Test
+&nbsp;    void testCreateContactSuccess() {
+<b class="fc">&nbsp;        Contact contact = new Contact(&quot;123457&quot;, &quot;Christine&quot;, &quot;Emerson&quot;, &quot;6038038231&quot;, &quot;139 Chestnut St.&quot;);</b>
+&nbsp;
+&nbsp;        //assertTrue(contact != null);
+<b class="fc">&nbsp;        assertTrue(contact.getContactId().equals(&quot;123457&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact.getFirstName().equals(&quot;Christine&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact.getLastName().equals(&quot;Emerson&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact.getPhoneNum().equals(&quot;6038038231&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact.getAddress().equals(&quot;139 Chestnut St.&quot;));</b>
+&nbsp;
+&nbsp;        //Test additional new contact with the same ID **(not sure this is right)**
+<b class="fc">&nbsp;        Contact contact1 = new Contact(&quot;123457&quot;, &quot;Chris&quot;, &quot;Grant&quot;, &quot;6038038232&quot;, &quot;149 Chestnut St.&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        assertTrue(contact1 != null);</b>
+<b class="fc">&nbsp;        assertTrue(contact1.getContactId().equals(&quot;123457&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact1.getFirstName().equals(&quot;Chris&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact1.getLastName().equals(&quot;Grant&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact1.getPhoneNum().equals(&quot;6038038232&quot;));</b>
+<b class="fc">&nbsp;        assertTrue(contact1.getAddress().equals(&quot;149 Chestnut St.&quot;));</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-29 02:02</div>
+</div>
+</body>
+</html>
